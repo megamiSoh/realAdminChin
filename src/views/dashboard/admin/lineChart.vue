@@ -4,7 +4,7 @@
 
 <script>
 import echarts from 'echarts'
-require('echarts/theme/macarons') // echarts 主题
+require('echarts/theme/macarons') // echarts 테마
 import { debounce } from '@/utils'
 
 export default {
@@ -42,7 +42,7 @@ export default {
       window.addEventListener('resize', this.__resizeHanlder)
     }
 
-    // 监听侧边栏的变化
+    // 사이드 바의 변경 사항 모니터링
     const sidebarElm = document.getElementsByClassName('sidebar-container')[0]
     sidebarElm.addEventListener('transitionend', this.__resizeHanlder)
   },

@@ -1,13 +1,14 @@
 <template>
   <div class="login-container">
     <el-form class="card-box login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
-      <h3 class="title">系统登录</h3>
-
+      <div><img :src="'../styles/images/logo.jpg'" /></div>
+      <h3 class="title">DESCENTE <i>Training</i></h3>
+      <div class="admin_text">관리자 홈페이지</div>
       <el-form-item prop="username">
         <span class="svg-container svg-container_login">
           <icon-svg icon-class="yonghuming" />
         </span>
-        <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="邮箱" />
+        <el-input name="username" type="text" v-model="loginForm.username" autoComplete="on" placeholder="loginForm" />
       </el-form-item>
 
       <el-form-item prop="password">
@@ -15,23 +16,12 @@
           <icon-svg icon-class="mima" />
         </span>
         <el-input name="password" :type="pwdType" @keyup.enter.native="handleLogin" v-model="loginForm.password" autoComplete="on"
-          placeholder="密码" />
+          placeholder="비밀번호" />
         <span class='show-pwd' @click='showPwd'><icon-svg icon-class="yanjing" /></span>
       </el-form-item>
-
-      <el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">登录</el-button>
-
-      <div class='tips'>账号:admin 密码随便填</div>
-      <div class='tips'>账号:editor  密码随便填</div>
-
-      <el-button class='thirdparty-button' type="primary" @click='showDialog=true'>打开第三方登录</el-button>
+      
+      <el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">로그인</el-button>
     </el-form>
-
-    <el-dialog title="第三方验证" :visible.sync="showDialog">
-      本地不能模拟，请结合自己业务进行模拟！！！<br/><br/><br/>
-      邮箱登录成功,请选择第三方验证<br/>
-      <social-sign />
-    </el-dialog>
 
   </div>
 </template>
@@ -39,21 +29,20 @@
 <script>
 import { isvalidUsername } from '@/utils/validate'
 import socialSign from './socialsignin'
-
 export default {
   components: { socialSign },
   name: 'login',
   data() {
     const validateUsername = (rule, value, callback) => {
       if (!isvalidUsername(value)) {
-        callback(new Error('请输入正确的用户名'))
+        callback(new Error('올바른 사용자 이름을 입력하십시오.'))
       } else {
         callback()
       }
     }
     const validatePassword = (rule, value, callback) => {
       if (value.length < 6) {
-        callback(new Error('密码不能小于6位'))
+        callback(new Error('암호는 6 자 이상이어야합니다.'))
       } else {
         callback()
       }
@@ -108,7 +97,7 @@ export default {
           // }
           // const codeName = hashObj[codeMap[this.auth_type]]
           // if (!codeName) {
-          //   alert('第三方登录失败')
+          //   alert('제 3 자 로그인에 실패했습니다.')
           // } else {
           //   this.$store.dispatch('LoginByThirdparty', codeName).then(() => {
           //     this.$router.push({ path: '/' })
@@ -127,7 +116,7 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss">
   @import "src/styles/mixin.scss";
-  $bg:#2d3a4b;
+  $bg:#000;
   $dark_gray:#889aa4;
   $light_gray:#eee;
 
@@ -138,14 +127,15 @@ export default {
     input:-webkit-autofill {
       -webkit-box-shadow: 0 0 0px 1000px #293444 inset !important;
       -webkit-text-fill-color: #fff !important;
+    overflow: hidden;
     }
     input {
-      background: transparent;
+      background: #fff;
       border: 0px;
       -webkit-appearance: none;
       border-radius: 0px;
       padding: 12px 5px 12px 15px;
-      color: $light_gray;
+      color: #000;
       height: 47px;
     }
     .el-input {
@@ -175,6 +165,13 @@ export default {
       margin: 0px auto 40px auto;
       text-align: center;
       font-weight: bold;
+      i{ color: red;}
+    }
+    .admin_text {
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      padding: 0 0 10px;
     }
     .login-form {
       position: absolute;

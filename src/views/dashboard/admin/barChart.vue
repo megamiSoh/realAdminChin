@@ -4,7 +4,7 @@
 
 <script>
 import echarts from 'echarts'
-require('echarts/theme/macarons') // echarts 主题
+require('echarts/theme/macarons') // echarts 테마
 
 const animationDuration = 3000
 export default {
@@ -44,8 +44,8 @@ export default {
       this.chart.setOption({
         tooltip: {
           trigger: 'axis',
-          axisPointer: { // 坐标轴指示器，坐标轴触发有效
-            type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
+          axisPointer: { // 축 표시기, 좌표축 트리거 활성화 됨
+            type: 'shadow' // 기본값은 직선입니다.：'line' | 'shadow'
           }
         },
         grid: {

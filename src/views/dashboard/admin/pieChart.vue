@@ -4,7 +4,7 @@
 
 <script>
 import echarts from 'echarts'
-require('echarts/theme/macarons') // echarts 主题
+require('echarts/theme/macarons') // echarts 테마
 
 export default {
   props: {

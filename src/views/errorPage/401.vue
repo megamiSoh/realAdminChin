@@ -1,26 +1,26 @@
 <template>
   <div class="errPage-container">
-    <el-button @click="back" icon='arrow-left' class="pan-back-btn">返回</el-button>
+    <el-button @click="back" icon='arrow-left' class="pan-back-btn">돌아 가기</el-button>
     <el-row>
       <el-col :span="12">
         <h1 class="text-jumbo text-ginormous">Oops!</h1>
-        gif来源<a href='https://zh.airbnb.com/' target='_blank'>airbnb</a> 页面
-        <h2>你没有权限去该页面</h2>
-        <h6>如有不满请联系你领导</h6>
+        gif출처<a href='https://zh.airbnb.com/' target='_blank'>airbnb</a> 페이지
+        <h2>해당 페이지로 이동할 수있는 권한이 없습니다.</h2>
+        <h6>불만이라면 지도자에게 연락하십시오.</h6>
         <ul class="list-unstyled">
-          <li>或者你可以去:</li>
+          <li>또는 갈 수 있습니다.:</li>
           <li class="link-type">
-            <router-link to="/dashboard">回首页</router-link>
+            <router-link to="/dashboard">집으로 돌아 가기</router-link>
           </li>
-          <li class="link-type"><a href="https://www.taobao.com/">随便看看</a></li>
-          <li><a @click.prevent="dialogVisible=true" href="#">点我看图</a></li>
+          <li class="link-type"><a href="https://www.taobao.com/">그냥 봐.</a></li>
+          <li><a @click.prevent="dialogVisible=true" href="#">나는지도를 본다.</a></li>
         </ul>
       </el-col>
       <el-col :span="12">
         <img :src="errGif" width="313" height="428" alt="Girl has dropped her ice cream.">
       </el-col>
     </el-row>
-    <el-dialog title="随便看" :visible.sync="dialogVisible" size="large">
+    <el-dialog title="그냥 봐." :visible.sync="dialogVisible" size="large">
       <img class="pan-img" :src="ewizardClap">
     </el-dialog>
   </div>

@@ -2,11 +2,11 @@
   <div class="app-container">
     <el-card class="box-card">
       <div slot="header">
-        <span style="line-height: 36px;">偏好设置</span>
-        <a class='link-type link-title' target="_blank" href='https://segmentfault.com/a/1190000009762198#articleHeader2'>动态换肤的教程</a>
+        <span style="line-height: 36px;">환경 설정</span>
+        <a class='link-type link-title' target="_blank" href='https://segmentfault.com/a/1190000009762198#articleHeader2'>동적 스키닝 튜토리얼</a>
       </div>
       <div class="box-item">
-        <span class="field-label">换肤:</span>
+        <span class="field-label">변화:</span>
         <el-switch v-model="theme" on-text="" off-text="">
         </el-switch>
       </div>
@@ -15,10 +15,10 @@
     <div class="block">
       <span class="demonstration">Button: </span>
       <span class="wrapper">
-        <el-button type="success">成功按钮</el-button>
-        <el-button type="warning">警告按钮</el-button>
-        <el-button type="danger">危险按钮</el-button>
-        <el-button type="info">信息按钮</el-button>
+        <el-button type="success">성공</el-button>
+        <el-button type="warning">경고</el-button>
+        <el-button type="danger">위험</el-button>
+        <el-button type="info">정보</el-button>
        </span>
     </div>
 
@@ -29,13 +29,13 @@
     </div>
 
     <div class="block">
-      <el-alert class='alert-item' title="成功提示的文案" type="success">
+      <el-alert class='alert-item' title="사본의 성공적인 발표" type="success">
       </el-alert>
-      <el-alert class='alert-item' title="消息提示的文案" type="info">
+      <el-alert class='alert-item' title="메시지 알리미" type="info">
       </el-alert>
-      <el-alert class='alert-item' title="警告提示的文案" type="warning">
+      <el-alert class='alert-item' title="알림 경고" type="warning">
       </el-alert>
-      <el-alert class='alert-item' title="错误提示的文案" type="error">
+      <el-alert class='alert-item' title="서류 제출에 대한 잘못된 조언" type="error">
       </el-alert>
     </div>
 
@@ -45,19 +45,19 @@
 
 <script>
 import { toggleClass } from '@/utils'
-import '@/assets/custom-theme/index.css' // 换肤版本element-ui css
+import '@/assets/custom-theme/index.css' // 스킨버전element-ui css
 
 export default {
   data() {
     return {
       theme: false,
       tags: [
-        { name: '标签一', type: '' },
-        { name: '标签二', type: 'gray' },
-        { name: '标签三', type: 'primary' },
-        { name: '标签四', type: 'success' },
-        { name: '标签五', type: 'warning' },
-        { name: '标签六', type: 'danger' }
+        { name: '태그1', type: '' },
+        { name: '태그2', type: 'gray' },
+        { name: '태그3', type: 'primary' },
+        { name: '태그4', type: 'success' },
+        { name: '태그5', type: 'warning' },
+        { name: '태그6', type: 'danger' }
       ]
     }
   },

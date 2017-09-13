@@ -9,10 +9,10 @@
       </div>
       <div class="bullshit">
         <div class="bullshit__oops">OOPS!</div>
-        <div class="bullshit__info">版权所有<a class='link-type' href='https://wallstreetcn.com' target='_blank'>华尔街见闻</a></div>
+        <div class="bullshit__info">판권 소유<a class='link-type' href='https://wallstreetcn.com' target='_blank'>월 스트리트 뉴스</a></div>
         <div class="bullshit__headline">{{ message }}</div>
         <div class="bullshit__info">입력 한 URL이 정확한지 확인하십시오. 다음 버튼을 클릭하여 홈페이지로 돌아가거나 오류 보고서를 보내주십시오.</div>
-        <a href="/" class="bullshit__return-home">返回首页</a>
+        <a href="/" class="bullshit__return-home"></a>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     message() {
-      return '特朗普说这个页面你不能进......'
+      return '트럼프가 이 페이지에 들어갈 수 없다고 했어.......'
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
 	<div class="components-container">
-		<code>splitPane 如果你用过<a href='http://codepen.io/' target='_blank'> codepen</a>,<a href='https://jsfiddle.net/' target='_blank'> jsfiddle </a>就不会陌生了
-      <a href='https://github.com/PanJiaChen/vue-split-pane' target='_blank'>项目地址</a>
+		<code>splitPane 당신이 그것을 사용한다면<a href='http://codepen.io/' target='_blank'> codepen</a>,<a href='https://jsfiddle.net/' target='_blank'> jsfiddle </a>익숙하지 않을거야.
+      <a href='https://github.com/PanJiaChen/vue-split-pane' target='_blank'>프로젝트 주소</a>
       </code>
 		<split-pane v-on:resize="resize" split="vertical">
 			<template slot="paneL">

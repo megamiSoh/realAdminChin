@@ -1,7 +1,7 @@
 <template>
   <div class="social-signup-container">
     <div class="sign-btn" @click="wechatHandleClick('wechat')">
-      <span class="wx-svg-container"><icon-svg icon-class="weixin" class="icon"></icon-svg></span> 微信
+      <span class="wx-svg-container"><icon-svg icon-class="weixin" class="icon"></icon-svg></span> 마이크로 편지
     </div>
     <div class="sign-btn" @click="tencentHandleClick('tencent')">
       <span class="qq-svg-container"><icon-svg icon-class="QQ" class="icon"></icon-svg></span> QQ

@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
 	<div class="dashboard-editor-container">
 		<github></github>
 		<el-row class="btn-group">
@@ -26,19 +26,19 @@
 			<el-col :span="6">
 				<el-card class="box-card">
 					<div slot="header" class="box-card-header">
-						<pan-thumb class="panThumb" :image="avatar"> 你的权限:
+						<pan-thumb class="panThumb" :image="avatar"> 당신의 권위:
 							<span class="pan-info-roles" :key='item' v-for="item in roles">{{item}}</span>
 						</pan-thumb>
 					</div>
 					<span class="display_name">{{name}}</span>
 					<div class="info-item">
 						<count-to class="info-item-num" :startVal='0' :endVal='statisticsData.article_count' :duration='3400'></count-to>
-						<span class="info-item-text">文章</span>
+						<span class="info-item-text">기사</span>
 						<icon-svg icon-class="a" class="dashboard-editor-icon"></icon-svg>
 					</div>
 					<div class="info-item">
 						<count-to class="info-item-num" :startVal='0' :endVal='statisticsData.pageviews_count' :duration='3600'></count-to>
-						<span class="info-item-text">浏览量</span>
+						<span class="info-item-text">페이지 뷰</span>
 						<icon-svg icon-class="b" class="dashboard-editor-icon"></icon-svg>
 					</div>
 				</el-card>
@@ -129,3 +129,4 @@ export default {
     }
 }
 </style>
+ -->

@@ -1,7 +1,7 @@
 <template>
   <div class="login-container">
     <el-form class="card-box login-form" autoComplete="on" :model="loginForm" :rules="loginRules" ref="loginForm" label-position="left">
-      <div><img :src="'../styles/images/logo.jpg'" /></div>
+      <div class="logo_img"><img :src="logoImg" /></div>
       <h3 class="title">DESCENTE <i>Training</i></h3>
       <div class="admin_text">관리자 홈페이지</div>
       <el-form-item prop="username">
@@ -20,13 +20,14 @@
         <span class='show-pwd' @click='showPwd'><icon-svg icon-class="yanjing" /></span>
       </el-form-item>
       
-      <el-button type="primary" style="width:100%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">로그인</el-button>
+      <el-button type="primary" style="width:50%;margin-bottom:30px;" :loading="loading" @click.native.prevent="handleLogin">로그인</el-button>
     </el-form>
 
   </div>
 </template>
 
 <script>
+import logoImg from '@/styles/images/logo.png'
 import { isvalidUsername } from '@/utils/validate'
 import socialSign from './socialsignin'
 export default {
@@ -50,8 +51,9 @@ export default {
     return {
       loginForm: {
         username: 'admin',
-        password: '1111111'
+        password: '1234'
       },
+      logoImg,
       loginRules: {
         username: [{ required: true, trigger: 'blur', validator: validateUsername }],
         password: [{ required: true, trigger: 'blur', validator: validatePassword }]
@@ -119,7 +121,7 @@ export default {
   $bg:#000;
   $dark_gray:#889aa4;
   $light_gray:#eee;
-
+  #app {height: 100%; background-color: #000;}
   .login-container {
     @include relative;
     height: 100vh;
@@ -127,7 +129,10 @@ export default {
     input:-webkit-autofill {
       -webkit-box-shadow: 0 0 0px 1000px #293444 inset !important;
       -webkit-text-fill-color: #fff !important;
-    overflow: hidden;
+    }
+    .logo_img {
+      text-align: center;
+      img {width: 100px;}
     }
     input {
       background: #fff;
@@ -149,7 +154,7 @@ export default {
       margin-bottom: 10px;
     }
     .svg-container {
-      padding: 6px 5px 6px 15px;
+      padding: 6px 30px 6px 15px;
       color: $dark_gray;
       vertical-align: middle;
       width: 30px;
@@ -179,7 +184,8 @@ export default {
       right: 0;
       width: 400px;
       padding: 35px 35px 15px 35px;
-      margin: 120px auto;
+      margin: 0 auto;
+      text-align: center;
     }
     .el-form-item {
       border: 1px solid rgba(255, 255, 255, 0.1);

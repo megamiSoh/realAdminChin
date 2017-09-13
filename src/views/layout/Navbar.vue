@@ -13,15 +13,15 @@
 			<el-dropdown-menu class="user-dropdown" slot="dropdown">
 				<router-link class='inlineBlock' to="/">
 					<el-dropdown-item>
-						首页
+						홈
 					</el-dropdown-item>
 				</router-link>
 				<a target='_blank' href="https://github.com/PanJiaChen/vue-element-admin/">
 					<el-dropdown-item>
-						项目地址
+						프로젝트 주소
 					</el-dropdown-item>
 				</a>
-				<el-dropdown-item divided><span @click="logout" style="display:block;">退出登录</span></el-dropdown-item>
+				<el-dropdown-item divided><span @click="logout" style="display:block;">로그온 종료</span></el-dropdown-item>
 			</el-dropdown-menu>
 		</el-dropdown>
 	</el-menu>
@@ -62,7 +62,7 @@ export default {
     },
     logout() {
       this.$store.dispatch('LogOut').then(() => {
-        location.reload()// 为了重新实例化vue-router对象 避免bug
+        location.reload()// 버그를 피하기 위해 vue-router 객체를 다시 인스턴스화하려면
       })
     }
   }

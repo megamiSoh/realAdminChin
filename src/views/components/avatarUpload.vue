@@ -1,12 +1,12 @@
 <template>
   <div class="components-container">
-    <code>这里核心代码用的是<a class='link-type' href='//github.com/dai-siki/vue-image-crop-upload'> vue-image-crop-upload</a>
-    由于我在使用时它只有vue@1版本，而且有些业务的需求耦合到七牛等等原因吧，自己改造了一下，如果大家要使用的话，优先还是使用官方component
+    <code>여기서 핵심 코드가 사용됩니다.<a class='link-type' href='//github.com/dai-siki/vue-image-crop-upload'> vue-image-crop-upload</a>
+    왜냐하면 당신이 사용하고자하는 경우 우선, 또는 공식을 사용하고자하는 경우에만 그것을 vue @ 1 버전을 사용하고, 일곱 가축 등에 결합 된 일부 비즈니스 요구, 등, 그들의 조금 변형component
     </code>
 
     <pan-thumb :image='image'></pan-thumb>
 
-    <el-button type="primary" icon="upload" style="position: absolute;bottom: 15px;margin-left: 40px;" @click="imagecropperShow=true">修改头像
+    <el-button type="primary" icon="upload" style="position: absolute;bottom: 15px;margin-left: 40px;" @click="imagecropperShow=true">아바타 수정
     </el-button>
 
     <image-cropper :width="300" :height="300" url="https://httpbin.org/post" @close='close' @crop-upload-success="cropSuccess" :key="imagecropperKey" v-show="imagecropperShow"></image-cropper>

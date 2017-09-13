@@ -8,8 +8,8 @@
       <label class="label" for="startValInput">startVal:  <input type="number" v-model.number='setStartVal' name='startValInput' /></label>
       <label class="label" for="endValInput">endVal:  <input type="number" v-model.number='setEndVal' name='endVaInput' /></label>
       <label class="label" for="durationInput">duration:  <input type="number" v-model.number='setDuration' name='durationInput' /></label>
-      <div class="startBtn example-btn" @click='start'>开始</div>
-      <div class="pause-resume-btn example-btn" @click='pauseResume'>暂停/恢复</div>
+      <div class="startBtn example-btn" @click='start'>시작</div>
+      <div class="pause-resume-btn example-btn" @click='pauseResume'>일시 중지 / 다시 시작</div>
       <br/>
       <label class="label" for="decimalsInput">decimals:  <input type="number" v-model.number='setDecimals' name='decimalsInput' /></label>
       <label class="label" for="separatorInput">separator:  <input v-model='setSeparator' name='separatorInput' /></label>

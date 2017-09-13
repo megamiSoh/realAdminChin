@@ -117,42 +117,42 @@
 
     export default {
         props: {
-            // 域，上传文件name，触发事件会带上（如果一个页面多个图片上传控件，可以做区分
+            // 도메인, 파일 이름 업로드, 트리거 이벤트 가져 오기 (페이지가 여러 장의 사진 업로드 컨트롤 인 경우 구분할 수 있음)
             field: {
                 type: String,
                 default: 'avatar'
             },
-            // 上传地址
+            // 주소 업로드
             url: {
                 type: String,
                 default: ''
             },
-            // 其他要上传文件附带的数据，对象格式
+            // 다른 하나는 데이터, 객체 형식에 첨부 된 파일을 업로드하는 것입니다.
             params: {
                 type: Object,
                 default: null
             },
-            // 剪裁图片的宽
+            // 그림의 너비를 자른다.
             width: {
                 type: Number,
                 default: 200
             },
-            // 剪裁图片的高
+            // 그림 높이 잘라 내기
             height: {
                 type: Number,
                 default: 200
             },
-            // 不预览圆形图片
+            // 원형 이미지를 미리 보지 마십시오.
             noCircle: {
                 type: Boolean,
                 default: false
             },
-            // 单文件大小限制
+            // 단일 파일 크기 제한
             maxSize: {
                 type: Number,
                 default: 10240
             },
-            // 语言类型
+            // 언어 유형
             langType: {
                 type: String,
                 'default': 'zh'
@@ -174,64 +174,64 @@
             }
             return {
                 show: true,
-                // 图片的mime
+                // 마임 그림
                 mime:mimes['jpg'],
-                // 语言包
+                // 언어 팩
                 lang,
-                // 浏览器是否支持该控件
+                // 브라우저가 컨트롤을 지원하는지 여부
                 isSupported,
-                // 步骤
-                step: 1, //1选择文件 2剪裁 3上传
-                // 上传状态及进度
-                loading: 0, //0未开始 1正在 2成功 3错误
+                // 단계
+                step: 1, //1 파일 선택 2 컷 3 업로드
+                // 상태 및 진행 상황 업로드
+                loading: 0, //0은 시작되지 않습니다 1 정체 2 성공 3 오류
                 progress: 0,
-                // 是否有错误及错误信息
+                // 오류 및 오류 메시지의 유무
                 hasError: false,
                 errorMsg: '',
-                // 需求图宽高比
+                // 수요 그래프 종횡비
                 ratio: width / height,
-                // 原图地址、生成图片地址
+                // 원래지도 주소, 그림 주소를 생성합니다.
                 sourceImg: null,
                 sourceImgUrl: '',
                 createImgUrl: '',
-                // 原图片拖动事件初始值
+                // 원본 이미지 이벤트 초기 값 드래그
                 sourceImgMouseDown: {
                     on: false,
-                    mX: 0, //鼠标按下的坐标
+                    mX: 0, //마우스가 좌표를 누른다.
                     mY: 0,
-                    x: 0, //scale原图坐标
+                    x: 0, //scale원래 좌표
                     y: 0
                 },
-                // 生成图片预览的容器大小
+                // 이미지 미리보기의 컨테이너 크기를 생성합니다.
                 previewContainer: {
                     width: 100,
                     height: 100
                 },
-                // 原图容器宽高
+                // 원래 컨테이너의 높이와 높이
                 sourceImgContainer: { // sic
                     width: 240,
                     height: 180
                 },
-                // 原图展示属性
+                // 원래 표시 속성
                 scale: {
-                    zoomAddOn: false, //按钮缩放事件开启
-                    zoomSubOn: false, //按钮缩放事件开启
-                    range: 1, //最大100
+                    zoomAddOn: false, //버튼 줌 이벤트가 켜짐
+                    zoomSubOn: false, //버튼 줌 이벤트가 켜짐
+                    range: 1, //최대100
                     x: 0,
                     y: 0,
                     width: 0,
                     height: 0,
                     maxWidth: 0,
                     maxHeight: 0,
-                    minWidth: 0, //最宽
+                    minWidth: 0, //가장 넓은
                     minHeight: 0,
-                    naturalWidth: 0, //原宽
+                    naturalWidth: 0, //원래 너비
                     naturalHeight: 0
                 }
             }
         },
         computed: {
-            // 进度条样式
+            // 진행 스타일
             progressStyle() {
                 let {
                         progress
@@ -240,7 +240,7 @@
                     width: progress + '%'
                 }
             },
-            // 原图样式
+            // 원본 패턴
             sourceImgStyle() {
                 let {
                         scale,
@@ -253,7 +253,7 @@
                     height: scale.height + 'px'
                 }
             },
-            // 原图蒙版属性
+            // 원래 마스크 속성
             sourceImgMasking() {
                 let {
                                 width,
@@ -262,7 +262,7 @@
                                 sourceImgContainer
                         } = this,
                         sic = sourceImgContainer,
-                        sicRatio = sic.width / sic.height, // 原图容器宽高比
+                        sicRatio = sic.width / sic.height, // 원본 컨테이너 종횡비
                         x = 0,
                         y = 0,
                         w = sic.width,
@@ -279,14 +279,14 @@
                     y = (sic.height - h) / 2;
                 }
                 return {
-                    scale, // 蒙版相对需求宽高的缩放
+                    scale, // 마스크는 수요에 비례하여 확장됩니다.
                     x,
                     y,
                     width: w,
                     height: h
                 };
             },
-            // 原图遮罩样式
+            // 원래 마스크 스타일
             sourceImgShadeStyle() {
                 let sic = this.sourceImgContainer,
                         sim = this.sourceImgMasking,
@@ -321,23 +321,23 @@
             }
         },
         methods: {
-            // 点击波纹效果
+            // 잔물결 효과를 클릭하십시오.
             ripple(e) {
                 effectRipple(e);
             },
-            // 关闭控件
+            // 컨트롤 닫기
             off() {
                 this.show = false;
                 this.$emit('close');
             },
-            // 设置步骤
+            // 단계 설정
             setStep(step) {
                 let that = this;
                 setTimeout(function () {
                     that.step = step;
                 }, 200);
             },
-            /* 图片选择区域函数绑定
+            /* 이미지 선택 영역 함수 바인딩
              ---------------------------------------------------------------*/
             preventDefault(e) {
                 e.preventDefault();
@@ -364,21 +364,21 @@
                 }
             },
             /* ---------------------------------------------------------------*/
-            // 检测选择的文件是否合适
+            // 선택한 파일이 적절한 지 확인하십시오.
             checkFile(file) {
                 let that = this,
                         {
                                 lang,
                                 maxSize
                         } = that;
-                // 仅限图片
+                // 이미지 전용
                 if (file.type.indexOf('image') === -1) {
                     that.hasError = true;
                     that.errorMsg = lang.error.onlyImg;
                     return false;
                 }
                 this.mime=file.type;
-                // 超出大小
+                // 크기 너머
                 if (file.size / 1024 > maxSize) {
                     that.hasError = true;
                     that.errorMsg = lang.error.outOfSize + maxSize + 'kb';
@@ -386,7 +386,7 @@
                 }
                 return true;
             },
-            // 重置控件
+            // 컨트롤 재설정
             reset() {
                 let that = this;
                 that.step = 1;
@@ -395,7 +395,7 @@
                 that.errorMsg = '';
                 that.progress = 0;
             },
-            // 设置图片源
+            // 이미지 소스 설정
             setSourceImg(file) {
                 let that = this,
                         fr = new FileReader();
@@ -405,7 +405,7 @@
                 };
                 fr.readAsDataURL(file);
             },
-            // 剪裁前准备工作
+            // 절단 전 작업 준비
             startCrop() {
                 let that = this,
                         {
@@ -428,7 +428,7 @@
                             h = sim.height,
                             x = 0,
                             y = 0;
-                    // 图片像素不达标
+                    // 이미지 픽셀은 표준에 맞지 않습니다.
 //                    if (nWidth < width || nHeight < height) {
 //                        that.hasError = true;
 //                        that.errorMsg = lang.error.lowestPx + width + '*' + height;
@@ -458,7 +458,7 @@
                     that.setStep(2);
                 };
             },
-            // 鼠标按下图片准备移动
+            // 마우스가 움직일 준비가 된 그림을 누른다.
             imgStartMove(e) {
                 let {
                                 sourceImgMouseDown,
@@ -471,7 +471,7 @@
                 simd.y = scale.y;
                 simd.on = true;
             },
-            // 鼠标按下状态下移动，图片移动
+            // 마우스를 아래로 움직여 사진을 이동하십시오.
             imgMove(e) {
                 let {
                                 sourceImgMouseDown: {
@@ -507,7 +507,7 @@
                 scale.x = rX;
                 scale.y = rY;
             },
-            // 按钮按下开始放大
+            // 줌을 시작하려면 버튼을 누르십시오.
             startZoomAdd(e) {
                 let that = this,
                         {
@@ -526,11 +526,11 @@
 
                 zoom();
             },
-            // 按钮松开或移开取消放大
+            // 해제 또는 제거 할 버튼
             endZoomAdd(e) {
                 this.scale.zoomAddOn = false;
             },
-            // 按钮按下开始缩小
+            //버튼을 누르면 축소되기 시작합니다.
             startZoomSub(e) {
                 let that = this,
                         {
@@ -549,7 +549,7 @@
 
                 zoom();
             },
-            // 按钮松开或移开取消缩小
+            // 취소하려면 단추를 놓거나 제거하십시오.
             endZoomSub(e) {
                 let {
                         scale
@@ -559,7 +559,7 @@
             zoomChange(e) {
                 this.zoomImg(e.target.value);
             },
-            // 缩放原图
+            // 원본 이미지 확대 / 축소
             zoomImg(newRange) {
                 let that = this,
                         {
@@ -579,16 +579,16 @@
                                 range
                         } = scale,
                         sim = sourceImgMasking,
-                        // 蒙版宽高
+                        // 마스크 너비와 높이
                         sWidth = sim.width,
                         sHeight = sim.height,
-                        // 新宽高
+                        // 새로운 너비와 높이
                         nWidth = minWidth + (maxWidth - minWidth) * newRange / 100,
                         nHeight = minHeight + (maxHeight - minHeight) * newRange / 100,
-                        // 新坐标（根据蒙版中心点缩放）
+                        // 새 좌표 (마스크 중심점 줌에 따름)
                         nX = sWidth / 2 - (nWidth / width) * (sWidth / 2 - x),
                         nY = sHeight / 2 - (nHeight / height) * (sHeight / 2 - y);
-                // 判断新坐标是否超过蒙版限制
+                // 새 좌표가 마스크 한계를 초과하는지 확인하십시오.
                 if (nX > 0) {
                     nX = 0;
                 }
@@ -601,7 +601,7 @@
                 if (nY < sHeight - nHeight) {
                     nY = sHeight - nHeight;
                 }
-                // 赋值处理
+                // 배정 처리
                 scale.x = nX;
                 scale.y = nY;
                 scale.width = nWidth;
@@ -613,7 +613,7 @@
                     }
                 }, 300);
             },
-            // 生成需求图片
+            // 수요 사진 생성
             createImg(e) {
                 let that = this,
                         {
@@ -632,13 +632,13 @@
                         canvas = that.$refs.canvas,
                         ctx = canvas.getContext('2d');
                 if (e) {
-                    // 取消鼠标按下移动状态
+                    // 이동 상태를 누르기 위해 마우스를 취소하십시오.
                     that.sourceImgMouseDown.on = false;
                 }
                 ctx.drawImage(sourceImg, x / scale, y / scale, width / scale, height / scale);
                 that.createImgUrl = canvas.toDataURL(mime);
             },
-            // 上传图片
+            // 사진 업로드
             upload() {
             let that = this,
                 {
@@ -654,20 +654,20 @@
                 } = this,
                 fmData = new FormData();
             fmData.append(field, data2blob(createImgUrl, mime), field + '.' + imgFormat);
-            // 添加其他参数
+            // 다른 매개 변수 추가
             if (typeof params == 'object' && params) {
                 Object.keys(params).forEach((k) => {
                     fmData.append(k, params[k]);
                 })
             }
-            // 监听进度回调
+            // 콜백 진행 상황 모니터링
             function uploadProgress (event) {
                 console.log(event)
                 if (event.lengthComputable) {
                     that.progress = 100 * Math.round(event.loaded) / event.total;
                 }
             };
-            // 上传文件
+            //파일 업로드
             that.reset();
             that.loading = 1;
             that.setStep(3);

@@ -1,10 +1,10 @@
-require('./check-versions')(); // 检查 Node 和 npm 版本
+require('./check-versions')(); // 노드 및 npm 버전 확인
 var config = require('../config');
 if (!process.env.NODE_ENV) {
     process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 }
 
-var opn = require('opn')
+var opn = require('opn');
 var path = require('path');
 var express = require('express');
 var webpack = require('webpack');

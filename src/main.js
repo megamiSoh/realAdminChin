@@ -4,11 +4,11 @@ import 'element-ui/lib/theme-default/index.css'
 import App from './App'
 import router from './router'
 import store from './store'
-import * as filters from './filters' // 全局filter
+import * as filters from './filters' // 글로벌filter
 import './icons' // icon
 import './errorLog'// error log
-import './permission' // 权限
-import './mock'  // 该项目所有请求使用mockjs模拟
+import './permission' // 권한
+import './mock'  // 프로젝트에 대한 모든 요청은 mockj를 사용하여 시뮬레이션합니다.
 
 Vue.use(ElementUI)
 

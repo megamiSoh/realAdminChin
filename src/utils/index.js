@@ -25,7 +25,7 @@
    }
    const time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
      let value = formatObj[key]
-     if (key === 'a') return ['一', '二', '三', '四', '五', '六', '日'][value - 1]
+     if (key === 'a') return ['월', '화', '수', '목', '금', '토', '일'][value - 1]
      if (result.length > 0 && value < 10) {
        value = '0' + value
      }
@@ -42,18 +42,18 @@
    const diff = (now - d) / 1000
 
    if (diff < 30) {
-     return '刚刚'
+     return '바로 지금'
    } else if (diff < 3600) { // less 1 hour
-     return Math.ceil(diff / 60) + '分钟前'
+     return Math.ceil(diff / 60) + '몇 분 전'
    } else if (diff < 3600 * 24) {
-     return Math.ceil(diff / 3600) + '小时前'
+     return Math.ceil(diff / 3600) + '몇 시간 전'
    } else if (diff < 3600 * 24 * 2) {
-     return '1天前'
+     return '1일 전'
    }
    if (option) {
      return parseTime(time, option)
    } else {
-     return d.getMonth() + 1 + '月' + d.getDate() + '日' + d.getHours() + '时' + d.getMinutes() + '分'
+     return d.getMonth() + 1 + '월' + d.getDate() + '일' + d.getHours() + '시' + d.getMinutes() + '분'
    }
  }
 
@@ -172,7 +172,7 @@
 
  export const pickerOptions = [
    {
-     text: '今天',
+     text: '오늘',
      onClick(picker) {
        const end = new Date()
        const start = new Date(new Date().toDateString())
@@ -180,7 +180,7 @@
        picker.$emit('pick', [start, end])
      }
    }, {
-     text: '最近一周',
+     text: '지난 주',
      onClick(picker) {
        const end = new Date(new Date().toDateString())
        const start = new Date()
@@ -188,7 +188,7 @@
        picker.$emit('pick', [start, end])
      }
    }, {
-     text: '最近一个月',
+     text: '지난 달',
      onClick(picker) {
        const end = new Date(new Date().toDateString())
        const start = new Date()
@@ -196,7 +196,7 @@
        picker.$emit('pick', [start, end])
      }
    }, {
-     text: '最近三个月',
+     text: '지난 3 개월',
      onClick(picker) {
        const end = new Date(new Date().toDateString())
        const start = new Date()
@@ -217,15 +217,15 @@
    let timeout, args, context, timestamp, result
 
    const later = function() {
-    // 据上一次触发时间间隔
+    // 마지막 트리거 간격에 따라
      const last = +new Date() - timestamp
 
-    // 上次被包装函数被调用时间间隔last小于设定时间间隔wait
+    // 마지막으로 랩된 함수가 마지막으로 호출 된 마지막 시간은 설정된 시간 간격보다 짧습니다.
      if (last < wait && last > 0) {
        timeout = setTimeout(later, wait - last)
      } else {
        timeout = null
-      // 如果设定为immediate===true，因为开始边界已经调用过了此处无需调用
+      // immediate===true로 설정된 경우，시작 경계가 호출하지 않고 여기서 호출 되었기 때문에
        if (!immediate) {
          result = func.apply(context, args)
          if (!timeout) context = args = null
@@ -237,7 +237,7 @@
      context = this
      timestamp = +new Date()
      const callNow = immediate && !timeout
-    // 如果延时不存在，重新设定延时
+    // 지연 시간이 없으면 지연 시간을 재설정하십시오.
      if (!timeout) timeout = setTimeout(later, wait)
      if (callNow) {
        result = func.apply(context, args)

@@ -58,14 +58,12 @@ export const asyncRouterMap = [
     path: '/permission',
     component: Layout,
     redirect: '/permission/index',
-    name: '운동영상관리',
+    // name: '운동영상관리',
     icon: 'quanxian',
-    // meta: { role: ['admin'] },
     // noDropdown: true,
-    // children: [{ path: 'index', component: _import('permission/index'), name: '운동영상관리', meta: { role: ['admin'] }}]
-    children: [
-      { path: 'permission', component: Layout, name: '웜업리스트', children: [
-        { path: 'permission', component: Layout, name: '신규등록' },
+    children: [{ path: 'index', component: _import('permission/index'), name: '운동영상관리' },
+      { path: 'index', component: Layout, name: '웜업리스트', children: [
+        { path: 'p1', component: Layout, name: '신규등록' },
         { path: 'permission', component: Layout, name: '상세정보' }
       ] },
       { path: 'permission', component: Layout, name: 'Main 운동리스트', children: [
@@ -94,10 +92,10 @@ export const asyncRouterMap = [
   //   children: [{ path: 'index', component: _import('svg-icons/index'), name: 'icons' }]
   // },
   {
-    path: '/components',
-    component: Layout,
-    redirect: '/components/index',
+    path: 'index',
+    component: _import('components/index'),
     name: '컨텐츠관리',
+    redirect: 'components/index',
     icon: 'zujian',
     children: [
       { path: 'index', component: _import('components/index'), name: 'Main 배너 리스트 ' },

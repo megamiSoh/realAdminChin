@@ -1,19 +1,21 @@
 <template>
 	<div class="app-wrapper" :class="{hideSidebar:!sidebar.opened}">
-		<sidebar class="sidebar-container"></sidebar>
 		<div class="main-container">
-			<navbar></navbar>
+			<barTop></barTop>
+			<!-- <navbar></navbar> -->
 			<app-main></app-main>
 		</div>
+		<sidebar class="sidebar-container"></sidebar>
 	</div>
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain } from 'views/layout'
+import { barTop, Navbar, Sidebar, AppMain } from 'views/layout'
 
 export default {
   name: 'layout',
   components: {
+    barTop,
     Navbar,
     Sidebar,
     AppMain
@@ -46,18 +48,21 @@ export default {
 			transition: width 0.28s ease-out;
 			width: 180px;
 			height: 100%;
-			position: fixed;
+			//position: fixed;
 			top: 0;
 			bottom: 0;
 			left: 0;
 			z-index: 1001;
 			overflow-y: auto;
+			display: inline-block;
+			background-color: #000;
  			&::-webkit-scrollbar {display:none}
 		}
 		.main-container {
 			min-height: 100%;
 			transition: margin-left 0.28s ease-out;
-			margin-left: 180px;
+			//margin-left: 180px;
+			
 		}
 	}
 </style>
